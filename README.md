@@ -1,10 +1,26 @@
 Laravel-Mongodb-AdminLTE integration.
 
-1. [Installation](#1-installation)
-2. [Usage](#2-usage)
+1. [Usage](#1-usage)
+2. [History](#2-history)
 
-## 1. Initialization
+## 1. Usage
+1. Git clone this project and enter the project directory
 
+2. Install required modules
+    ```
+    composer install
+    npm install
+    ```
+3. Run Laravel Mix script
+    ```
+    npm run dev
+    ```
+4. Create your .env file
+
+5. Now, edit `config/adminlte.php` to configure the title, skin, menu, URLs etc.
+
+## 2. History
+This section will elaborate how this project and library were integrated.
 > Note: only for Laravel 5.2 and higher
 1. Create new laravel project
     ```
@@ -61,11 +77,3 @@ Laravel-Mongodb-AdminLTE integration.
 
     This command should be used on fresh applications, just like the `make:auth` command
 
-## 2. Usage
-First, publish the configuration file:
-
-```
-php artisan vendor:publish --provider="JeroenNoten\LaravelAdminLte\ServiceProvider" --tag=config
-```
-
-Now, edit `config/adminlte.php` to configure the title, skin, menu, URLs etc.
