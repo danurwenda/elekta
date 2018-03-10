@@ -11,5 +11,9 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.js([
+    'node_modules/flot/jquery.flot.js',
+    'node_modules/flot/jquery.flot.time.js',
+    'node_modules/flot/jquery.flot.categories.js'
+], 
+'public/vendor/flot/flot.bundle.js');
