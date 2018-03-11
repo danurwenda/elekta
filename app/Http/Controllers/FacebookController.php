@@ -12,6 +12,15 @@ use App\Models\Ipul;
  */
 class FacebookController extends Controller {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function getIndex() {
         return view('pages.sosmed.facebook', [
             //data yang diambil
@@ -19,14 +28,14 @@ class FacebookController extends Controller {
             'todaykhof' => Khofifah::todayPostNum(),
             'todayipul' => Ipul::todayPostNum(),
             //total post per hari dalam 7 hari terakhir
-            'weekkhof'=>Khofifah::weeklyPostNum(),
-            'weekipul'=>Ipul::weeklyPostNum(),
+            'weekkhof' => Khofifah::weeklyPostNum(),
+            'weekipul' => Ipul::weeklyPostNum(),
             //total like, comment, share
-            'totalkhof'=>Khofifah::summary(),
-            'totalipul'=>Ipul::summary(),
+            'totalkhof' => Khofifah::summary(),
+            'totalipul' => Ipul::summary(),
             //the number of follower
-            'followerkhof'=>GroupInfo::followersKhof(),
-            'followeripul'=>GroupInfo::followersIpul()
+            'followerkhof' => GroupInfo::followersKhof(),
+            'followeripul' => GroupInfo::followersIpul()
         ]);
     }
 

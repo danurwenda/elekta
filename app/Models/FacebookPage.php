@@ -43,7 +43,12 @@ class FacebookPage extends Eloquent {
      * @return array
      */
     public static function summary() {
-        return [1000, 300, 500];
+        $f = (new static);
+        $l = $f->sum('likes.summary.total_count');
+        $c = $f->sum('comments.summary.total_count');
+        $s = $f->sum('shares.count');
+        $t = $l + $c + $s;
+        return [$l, $c, $s, $t];
     }
 
     /**
