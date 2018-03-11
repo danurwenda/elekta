@@ -84,15 +84,16 @@ $(function () {
      */
 
     var inter_khof = {
-        data: [['Khofifah', khof_follower]],
+        data: [['Khofifah', khof_summary[3] * 1000 / khof_follower]],
         color: khof_color
     }
     var inter_gi = {
-        data: [['Gus Ipul', ipul_follower]],
+        data: [['Gus Ipul', ipul_summary[3] * 1000 / ipul_follower]],
         color: ipul_color
     }
     $.plot('#interaction-chart', [inter_khof, inter_gi], {
         grid: {
+            hoverable: 1,
             borderWidth: 1,
             borderColor: '#f3f3f3',
             tickColor: '#f3f3f3'
@@ -109,7 +110,20 @@ $(function () {
             tickLength: 0
         }
     })
+    $('#interaction-chart').bind('plothover', function (event, pos, item) {
 
+        if (item) {
+            var label = item.series.data[0][0],
+                    y = item.series.data[0][1]
+
+            $('#line-chart-tooltip').html(parseInt(y).toLocaleString() + ' ' + label)
+                    .css({top: item.pageY + 5, left: item.pageX - 50})
+                    .fadeIn(200)
+        } else {
+            $('#line-chart-tooltip').hide()
+        }
+
+    })
 
     /**
      * TOTAL INTERACTION CHART
@@ -160,7 +174,7 @@ $(function () {
             var label = item.series.data[0][0],
                     y = item.series.data[0][1]
 
-            $('#line-chart-tooltip').html(parseInt(y) + ' ' + label)
+            $('#line-chart-tooltip').html(parseInt(y).toLocaleString() + ' ' + label)
                     .css({top: item.pageY + 5, left: item.pageX - 50})
                     .fadeIn(200)
         } else {
@@ -213,7 +227,7 @@ $(function () {
                 var label = item.series.data[0][0],
                         y = item.series.data[0][1]
 
-                $('#line-chart-tooltip').html(parseInt(y) + ' ' + label)
+                $('#line-chart-tooltip').html(parseInt(y).toLocaleString() + ' ' + label)
                         .css({top: item.pageY + 5, left: item.pageX - 50})
                         .fadeIn(200)
             } else {
@@ -262,7 +276,7 @@ $(function () {
             var x = item.datapoint[0].toFixed(2),
                     y = item.datapoint[1].toFixed(2)
 
-            $('#line-chart-tooltip').html(parseInt(y) + ' post')
+            $('#line-chart-tooltip').html(parseInt(y).toLocaleString() + ' post')
                     .css({top: item.pageY + 5, left: item.pageX + 5})
                     .fadeIn(200)
         } else {
