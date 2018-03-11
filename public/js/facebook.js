@@ -66,8 +66,8 @@ $(function () {
             var x = item.datapoint[0].toFixed(2),
                     y = item.datapoint[1].toFixed(2)
 
-            $('#line-chart-tooltip').html(item.series.label + ' of ' + x + ' = ' + y)
-                    .css({top: item.pageY + 5, left: item.pageX + 5})
+            $('#line-chart-tooltip').html(item.series.label + ' ' + moment(parseInt(x)).format("DD-MMM-YYYY") + ' = ' + parseInt(y) + ' post')
+                    .css({top: item.pageY + 5, left: item.pageX - 50})
                     .fadeIn(200)
         } else {
             $('#line-chart-tooltip').hide()
@@ -117,26 +117,27 @@ $(function () {
     $.plot('#total_khof', [
         //LIKE
         {
-        data: [['Like', khof_summary[0]]],
-        color: khof_color
-    },
+            data: [['Like', khof_summary[0]]],
+            color: khof_color
+        },
         //COMMENTS
         {
-        data: [['Comments', khof_summary[1]]],
-        color: khof_color
-    },
-                //SHARE
-     {
-        data: [['Share', khof_summary[2]]],
-        color: khof_color
-    }    ,
-    //TOTAL INTERACTION
+            data: [['Comments', khof_summary[1]]],
+            color: khof_color
+        },
+        //SHARE
         {
-        data: [['Interaction/1K', khof_summary[3]*1000/khof_follower]],
-        color: khof_color
-    }       
+            data: [['Share', khof_summary[2]]],
+            color: khof_color
+        },
+        //TOTAL INTERACTION
+        {
+            data: [['Interaction/1K', khof_summary[3] * 1000 / khof_follower]],
+            color: khof_color
+        }
     ], {
         grid: {
+            hoverable: true,
             borderWidth: 1,
             borderColor: '#f3f3f3',
             tickColor: '#f3f3f3'
@@ -153,29 +154,43 @@ $(function () {
             tickLength: 0
         }
     })
+    $('#total_khof').bind('plothover', function (event, pos, item) {
+
+        if (item) {
+            var label = item.series.data[0][0],
+                    y = item.series.data[0][1]
+
+            $('#line-chart-tooltip').html(parseInt(y) + ' ' + label)
+                    .css({top: item.pageY + 5, left: item.pageX - 50})
+                    .fadeIn(200)
+        } else {
+            $('#line-chart-tooltip').hide()
+        }
+
+    })
     $('a[href="#total_ipul"]').one('shown.bs.tab', function (e) {
-        console.log('render hidden plot')
         $.plot('#total_ipul', [//LIKE
-        {
-        data: [['Like', ipul_summary[0]]],
-        color: ipul_color
-    },
-        //COMMENTS
-        {
-        data: [['Comments', ipul_summary[1]]],
-        color: ipul_color
-    },
-                //SHARE
-     {
-        data: [['Share', ipul_summary[2]]],
-        color: ipul_color
-    }    ,
-    //TOTAL INTERACTION
-        {
-        data: [['Interaction/1K', ipul_summary[3]*1000/ipul_follower]],
-        color: ipul_color
-    } ], {
+            {
+                data: [['Like', ipul_summary[0]]],
+                color: ipul_color
+            },
+            //COMMENTS
+            {
+                data: [['Comments', ipul_summary[1]]],
+                color: ipul_color
+            },
+            //SHARE
+            {
+                data: [['Share', ipul_summary[2]]],
+                color: ipul_color
+            },
+            //TOTAL INTERACTION
+            {
+                data: [['Interaction/1K', ipul_summary[3] * 1000 / ipul_follower]],
+                color: ipul_color
+            }], {
             grid: {
+                hoverable: true,
                 borderWidth: 1,
                 borderColor: '#f3f3f3',
                 tickColor: '#f3f3f3'
@@ -191,6 +206,20 @@ $(function () {
                 mode: 'categories',
                 tickLength: 0
             }
+        })
+        $('#total_ipul').bind('plothover', function (event, pos, item) {
+
+            if (item) {
+                var label = item.series.data[0][0],
+                        y = item.series.data[0][1]
+
+                $('#line-chart-tooltip').html(parseInt(y) + ' ' + label)
+                        .css({top: item.pageY + 5, left: item.pageX - 50})
+                        .fadeIn(200)
+            } else {
+                $('#line-chart-tooltip').hide()
+            }
+
         })
     })
 
@@ -211,6 +240,7 @@ $(function () {
     }
     $.plot('#today-chart', [today_khof, today_gi], {
         grid: {
+            hoverable: true,
             borderWidth: 1,
             borderColor: '#f3f3f3',
             tickColor: '#f3f3f3'
@@ -226,6 +256,19 @@ $(function () {
             mode: 'categories',
             tickLength: 0
         }
+    })
+    $('#today-chart').bind('plothover', function (event, pos, item) {
+        if (item) {
+            var x = item.datapoint[0].toFixed(2),
+                    y = item.datapoint[1].toFixed(2)
+
+            $('#line-chart-tooltip').html(parseInt(y) + ' post')
+                    .css({top: item.pageY + 5, left: item.pageX + 5})
+                    .fadeIn(200)
+        } else {
+            $('#line-chart-tooltip').hide()
+        }
+
     })
     /* END TODAY CHART */
 

@@ -120,5 +120,6 @@ var khof_7 =
 
 
 <script src="{{{ URL::asset('vendor/flot/flot.bundle.js')}}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 <script src="{{{ URL::asset('js/facebook.js')}}}"></script>
 @endsection
