@@ -10,7 +10,9 @@ $(function () {
     }
 
     var khof_week = [], ipul_week = [];
-    var today = new Date(2018, 2, 7, 7, 0, 0, 0).getTime();
+    var d = new Date();
+    d.setHours(0, 0, 0, 0);//midnight
+    var today = d.getTime();
     for (var i = -5; i <= 1; i++) {
         khof_week.push([today + (1000 * 3600 * 24 * i), khof_7[i + 5]])
         ipul_week.push([today + (1000 * 3600 * 24 * i), ipul_7[i + 5]])
@@ -240,19 +242,19 @@ $(function () {
     /* END INTER CHART */
 
     /*
-     * TODAY CHART
+     * TOTAL CHART
      * ---------
      */
 
-    var today_khof = {
-        data: [['Khofifah', khof_today]],
+    var total_khof = {
+        data: [['Khofifah', khof_total]],
         color: khof_color
     }
-    var today_gi = {
-        data: [['Gus Ipul', ipul_today]],
+    var total_gi = {
+        data: [['Gus Ipul', ipul_total]],
         color: ipul_color
     }
-    $.plot('#today-chart', [today_khof, today_gi], {
+    $.plot('#total-chart', [total_khof, total_gi], {
         grid: {
             hoverable: true,
             borderWidth: 1,
@@ -271,7 +273,7 @@ $(function () {
             tickLength: 0
         }
     })
-    $('#today-chart').bind('plothover', function (event, pos, item) {
+    $('#total-chart').bind('plothover', function (event, pos, item) {
         if (item) {
             var x = item.datapoint[0].toFixed(2),
                     y = item.datapoint[1].toFixed(2)
@@ -284,7 +286,7 @@ $(function () {
         }
 
     })
-    /* END TODAY CHART */
+    /* END TOTAL CHART */
 
 
 

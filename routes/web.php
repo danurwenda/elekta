@@ -19,3 +19,5 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('sosmed/facebook', 'FacebookController@getIndex');
+Route::get('sosmed/facebook/update', 'FacebookController@updateData');
+//Route::get('init/{page}', 'FacebookController@initInfo');

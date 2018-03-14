@@ -9,6 +9,7 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
  */
 class GroupInfo extends Eloquent {
 
+    protected $guarded = [];
     protected $collection = 'groupinfo';
 
     /**
@@ -16,7 +17,7 @@ class GroupInfo extends Eloquent {
      * @return int
      */
     public static function followersKhof() {
-        return 7108;
+        return (new static)->raw()->findOne(['page_name' => 'khofifahemiljatim'])->fan_count;
     }
 
     /**
@@ -24,7 +25,11 @@ class GroupInfo extends Eloquent {
      * @return array 
      */
     public static function followersIpul() {
-        return 332757;
+        return (new static)->raw()->findOne(['page_name' => 'jatimsedulur'])->fan_count;
+    }
+
+    public static function getInfo($page_name) {
+        return GroupInfo::where('page_name', $page_name)->first();
     }
 
 }

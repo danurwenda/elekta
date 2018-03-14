@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="box-body">
-                <div id="today-chart" style="height: 300px;"></div>
+                <div id="total-chart" style="height: 300px;"></div>
             </div>
             <!-- /.box-body-->
         </div>
@@ -112,10 +112,10 @@ var khof_7 =
         ipul_7 = [{{ implode(',', $weekipul) }}],
         khof_follower = {{ $followerkhof }},
         ipul_follower = {{ $followeripul }},
-        khof_today = {{ $todaykhof }},
-        ipul_today = {{ $todayipul }},
-        khof_summary = [{{ implode(',', $totalkhof) }}],
-        ipul_summary = [{{ implode(',', $totalipul) }}];
+        khof_total = {{ $totalkhof }},
+        ipul_total = {{ $totalipul }},
+        khof_summary = [{{ implode(',', $summarykhof) }}],
+        ipul_summary = [{{ implode(',', $summaryipul) }}];
     </script>
 
 

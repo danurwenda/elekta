@@ -1,11 +1,11 @@
 <?php namespace App\Models;
 
-use App\Models\FacebookPage as FB;
+use App\Models\FacebookKubu as Kubu;
 
 /**
  * Represents a collection of all fb post from khofifah-based fanpages
  */
-class Khofifah extends FB
+class Khofifah extends Kubu
 {
-	protected $collection = 'khofifahemiljatim';
+	protected $party = 'khofifah';
 }
