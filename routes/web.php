@@ -11,13 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('home');
-});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// DASHBOARD
+Route::get('/', 'HomeController@index')->name('home');
+// FACEBOOK
 Route::get('sosmed/facebook', 'FacebookController@getIndex');
-Route::get('sosmed/facebook/update', 'FacebookController@updateData');
-//Route::get('init/{page}', 'FacebookController@initInfo');
+// TWITTER
+
+// MAINSTREAM MEDIA
+
+// YOUTUBE

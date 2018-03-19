@@ -71,11 +71,11 @@ return [
       | Set register_url to null if you don't want a register link.
       |
      */
-    'dashboard_url' => 'home',
+    'dashboard_url' => '',
     'logout_url' => 'logout',
     'logout_method' => null,
     'login_url' => 'login',
-    'register_url' => 'register',
+    'register_url' => null,
     /*
       |--------------------------------------------------------------------------
       | Menu Items
@@ -91,7 +91,7 @@ return [
         //'MAIN NAVIGATION',
         [
             'text' => 'Dashboard',
-            'url' => 'home',
+            'url' => '',
             'icon' => 'tachometer',
         ],
 //        [
