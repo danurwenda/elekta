@@ -42,7 +42,7 @@ class FacebookController extends Controller {
     }
 
     public function updateData() {
-        foreach (config('facebook.parties') as $key=>$value) {
+        foreach (config('facebook.parties') as $key => $value) {
             foreach ($value['pages'] as $page) {
                 $groupinfo = GroupInfo::getInfo($page);
                 if (is_null($groupinfo)) {
@@ -55,6 +55,7 @@ class FacebookController extends Controller {
                 $this->fetchPost($page, $since);
             }
         }
+        return redirect()->route('facebook');
     }
 
     public function initInfo($page) {
@@ -143,6 +144,33 @@ class FacebookController extends Controller {
             exit;
         }
         echo "Done fetching from $page since $last_fetch<br/>";
+    }
+
+    public static function getYesterday($page) {
+        switch ($page) {
+            case 1:
+                return Khofifah::getYesterday();
+            case 2:
+                return Ipul::getYesterday();
+        }
+    }
+
+    public static function getToday($page) {
+        switch ($page) {
+            case 1:
+                return Khofifah::getToday();
+            case 2:
+                return Ipul::getToday();
+        }
+    }
+
+    public static function getAllPostNum($page) {
+        switch ($page) {
+            case 1:
+                return Khofifah::totalPostNum();
+            case 2:
+                return Ipul::totalPostNum();
+        }
     }
 
 }

@@ -35,7 +35,7 @@ class FacebookKubu {
 
     /**
      * The number of post in the last 7 days
-     * @return array 
+     * @return array
      */
     public static function weeklyPostNum() {
         $ret = [];
@@ -59,6 +59,36 @@ class FacebookKubu {
             $ret[] = $postNum;
         }
         return $ret;
+    }
+
+    public static function getPastDay($i) {
+        $today = strtotime('today');
+        $ret = 0;
+        try {
+            $kubu = config("facebook.parties." . (new static)->getParty());
+        } catch (\Illuminate\Container\EntryNotFoundException $e) {
+            return $ret;
+        }
+
+        $day_start = $today - $i * 24 * 3600;
+        $day_end = $today - ($i - 1) * 24 * 3600;
+        $postNum = 0;
+        foreach ($kubu['pages'] as $page) {
+            $postNum = DB::collection($page)
+                    ->where('created_time', '>=', date_create("@$day_start"))
+                    ->where('created_time', '<', date_create("@$day_end"))
+                    ->count();
+        }
+        $ret = $postNum;
+        return $ret;
+    }
+
+    public static function getToday() {
+        return (new static)->getPastDay(0);
+    }
+
+    public static function getYesterday() {
+        return (new static)->getPastDay(1);
     }
 
     /**

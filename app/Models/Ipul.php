@@ -3,7 +3,7 @@
 use App\Models\FacebookKubu as Kubu;
 
 /**
- * Represents a collection of all fb post from khofifah-based fanpages
+ * Represents a collection of all fb post from ipul-based fanpages
  */
 class Ipul extends Kubu
 {
