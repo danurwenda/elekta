@@ -31,5 +31,9 @@ class GroupInfo extends Eloquent {
     public static function getInfo($page_name) {
         return GroupInfo::where('page_name', $page_name)->first();
     }
+    
+    public static function lastUpdate(){
+        return GroupInfo::min('last_fetch');
+    }
 
 }

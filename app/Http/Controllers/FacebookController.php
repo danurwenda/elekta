@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\GroupInfo;
 use App\Models\Khofifah;
 use App\Models\Ipul;
 
@@ -22,6 +23,8 @@ class FacebookController extends Controller {
 
     public function getIndex() {
         return view('pages.sosmed.facebook', [
+            //timestamp data diambil terakhir
+            'timestamp'=> GroupInfo::lastUpdate(),
             //data yang diambil
             //total post hari ini di masing-masing fanpage
             'totalkhof' => Khofifah::totalPostNum(),

@@ -92,7 +92,8 @@ return [
         [
             'text' => 'Dashboard',
             'url' => '',
-            'icon' => 'tachometer',
+            'active'=>[''],
+            'icon' => 'dashboard'
         ],
 //        [
 //            'text'        => 'Pages',
@@ -174,7 +175,8 @@ return [
         ],
         [
             'text' => 'Analisis',
-            'icon' => 'laptop'
+            'icon' => 'laptop',
+            'url'  => 'analisis'
         ],
         [
             'text' => 'Rekomendasi',

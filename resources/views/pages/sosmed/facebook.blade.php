@@ -1,7 +1,6 @@
 @extends('adminlte::page')
-@section('content_header')
-<h1>Facebook<small>last update</small></h1>
-@stop
+@section('header','Facebook')
+@section('description','last update : '.date('H:i:s d-M-Y',$timestamp))
 
 @section('content')
 
