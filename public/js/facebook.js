@@ -1,4 +1,5 @@
 $(function () {
+    $('#fb-last-update').show().html(moment.unix($('#fb-last-update').html()).format('HH:mm:ss DD-MMM-YYYY'));
     var khof_color = '#f6ab02';
     var ipul_color = '#05693c';
     /*

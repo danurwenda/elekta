@@ -1,6 +1,8 @@
 @extends('adminlte::page')
 @section('header','Facebook')
-@section('description','last update : '.date('H:i:s d-M-Y',$timestamp))
+@section('description')
+last update : <span id='fb-last-update' style='display: none'>{{ $timestamp }}</span>
+@stop
 
 @section('content')
 
@@ -119,6 +121,6 @@ var khof_7 =
 
 
 <script src="{{{ URL::asset('vendor/flot/flot.bundle.js')}}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
 <script src="{{{ URL::asset('js/facebook.js')}}}"></script>
 @endsection
