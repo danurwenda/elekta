@@ -5,15 +5,20 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
-class Kernel extends ConsoleKernel
-{
+class Kernel extends ConsoleKernel {
+
     /**
      * The Artisan commands provided by your application.
      *
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\FacebookUpdater'
+        'App\Console\Commands\FacebookUpdater',
+        'App\Console\Commands\fetchdata',
+        'App\Console\Commands\fetchtwitter',
+        'App\Console\Commands\fetchyoutube',
+        'App\Console\Commands\fetchgplus',
+        'App\Console\Commands\fetchgraph'
     ];
 
     /**
@@ -22,9 +27,13 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
-    {
-        $schedule->command('facebook:update')->hourly();
+    protected function schedule(Schedule $schedule) {
+        $schedule->command('facebook:update')->everyFiveMinutes();
+        $schedule->command('fetch:galert')->everyFiveMinutes();
+        $schedule->command('fetch:twitter')->everyFiveMinutes();
+        $schedule->command('fetch:youtube')->everyFiveMinutes();
+        $schedule->command('fetch:gplus')->everyFiveMinutes();
+//        $schedule->command('fetch:graph')->everyFiveMinutes();
     }
 
     /**
@@ -32,10 +41,10 @@ class Kernel extends ConsoleKernel
      *
      * @return void
      */
-    protected function commands()
-    {
-        $this->load(__DIR__.'/Commands');
+    protected function commands() {
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }
+
 }

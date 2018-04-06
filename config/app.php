@@ -148,6 +148,14 @@ return [
          * AdminLTE
          */
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+        /**
+         * Thujohn/Twitter
+         */
+        Thujohn\Twitter\TwitterServiceProvider::class,
+        /**
+         * Alaouy/Youtube
+         */
+        Alaouy\Youtube\YoutubeServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------
@@ -193,5 +201,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        // Thujohn/Twitter
+        'Twitter' => Thujohn\Twitter\Facades\Twitter::class,
+        // Alayouy/Youtube
+        'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
     ],
 ];
