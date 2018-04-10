@@ -5,6 +5,8 @@ return [
     'app_id' => env('FACEBOOK_APP_ID', ''),
     'app_secret' => env('FACEBOOK_APP_SECRET', ''),
     'token' => env('FACEBOOK_APP_TOKEN', ''),
+    'page_collection_prefix'=>'FBPage',
+    'news_collection_prefix'=>'FBNews',
     'parties' => [
         //khofifah
         'khofifah' =>
@@ -19,4 +21,10 @@ return [
             'pages' => ['jatimsedulur']
         ]
     ],
+    'keywords'=>['Emil Dardak','Puti ','Khofifah ','Gus Ipul'],
+    'newspages'=>[
+        'detikcom',
+        'KompasTV',
+        'KOMPAScom'
+    ]
 ];

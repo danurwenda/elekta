@@ -52,8 +52,7 @@ class FacebookKubu {
             $postNum = 0;
             foreach ($kubu['pages'] as $page) {
                 $postNum = DB::collection($page)
-                        ->where('created_time', '>=', date_create("@$day_start"))
-                        ->where('created_time', '<', date_create("@$day_end"))
+                        ->whereBetween('created_time', [date_create("@$day_start"), date_create("@$day_end")])
                         ->count();
             }
             $ret[] = $postNum;
@@ -75,8 +74,7 @@ class FacebookKubu {
         $postNum = 0;
         foreach ($kubu['pages'] as $page) {
             $postNum = DB::collection($page)
-                    ->where('created_time', '>=', date_create("@$day_start"))
-                    ->where('created_time', '<', date_create("@$day_end"))
+                    ->whereBetween('created_time', [date_create("@$day_start"), date_create("@$day_end")])
                     ->count();
         }
         $ret = $postNum;
