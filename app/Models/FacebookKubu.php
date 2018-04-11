@@ -28,7 +28,7 @@ class FacebookKubu {
         }
         foreach ($kubu['pages'] as $page) {
             // count each page's total post
-            $sumToday += DB::collection($page)->count();
+            $sumToday += DB::collection(config('facebook.page_collection_prefix').'.'.$page)->count();
         }
         return $sumToday;
     }
@@ -51,7 +51,7 @@ class FacebookKubu {
             $day_end = $today - ($i - 1) * 24 * 3600;
             $postNum = 0;
             foreach ($kubu['pages'] as $page) {
-                $postNum = DB::collection($page)
+                $postNum = DB::collection(config('facebook.page_collection_prefix').'.'.$page)
                         ->whereBetween('created_time', [date_create("@$day_start"), date_create("@$day_end")])
                         ->count();
             }
@@ -73,7 +73,7 @@ class FacebookKubu {
         $day_end = $today - ($i - 1) * 24 * 3600;
         $postNum = 0;
         foreach ($kubu['pages'] as $page) {
-            $postNum = DB::collection($page)
+            $postNum = DB::collection(config('facebook.page_collection_prefix').'.'.$page)
                     ->whereBetween('created_time', [date_create("@$day_start"), date_create("@$day_end")])
                     ->count();
         }
@@ -103,7 +103,7 @@ class FacebookKubu {
         $c = 0;
         $s = 0;
         foreach ($kubu['pages'] as $page) {
-            $f = DB::collection($page);
+            $f = DB::collection(config('facebook.page_collection_prefix').'.'.$page);
             $l += $f->sum('likes.summary.total_count');
             $c += $f->sum('comments.summary.total_count');
             $s += $f->sum('shares.count');

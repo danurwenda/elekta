@@ -154,9 +154,11 @@ class FacebookUpdater extends Command {
                     $pArr = $post->asArray();
                     $keywords = config('facebook.keywords');
                     $relevant = false;
-                    while (!$relevant && (NULL != ($key = array_pop($keywords)))) {
-                        $relevant = (false !== strpos($pArr['message'], $key));
-                    };
+                    if (array_key_exists('message', $pArr)) {
+                        while (!$relevant && (NULL != ($key = array_pop($keywords)))) {
+                            $relevant = (false !== strpos($pArr['message'], $key));
+                        }
+                    }
                     if ($relevant) {
                         $pArr = $this->createPostArray($post);
                         DB::collection($groupinfo->collection)->insert($pArr);

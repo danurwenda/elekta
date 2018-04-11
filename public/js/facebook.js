@@ -11,12 +11,12 @@ $(function () {
     }
 
     var khof_week = [], ipul_week = [];
-    var d = new Date();
-    d.setHours(0, 0, 0, 0);//midnight
+    var d = new Date(); //local time
+    d.setHours(12, 0, 0, 0);//midnight
     var today = d.getTime();
-    for (var i = -5; i <= 1; i++) {
-        khof_week.push([today + (1000 * 3600 * 24 * i), khof_7[i + 5]])
-        ipul_week.push([today + (1000 * 3600 * 24 * i), ipul_7[i + 5]])
+    for (var i = -6; i <= 0; i++) {
+        khof_week.push([today + (1000 * 3600 * 24 * i), khof_7[i + 6]])
+        ipul_week.push([today + (1000 * 3600 * 24 * i), ipul_7[i + 6]])
     }
     var line_data1 = {
         label: "Khofifah",
@@ -54,7 +54,7 @@ $(function () {
         xaxis: {
             mode: "time",
             tickSize: [1, "day"],
-            tickLength: 0
+            tickLength: 1
         }
     })
     //Initialize tooltip on hover
