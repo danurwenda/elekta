@@ -11,9 +11,10 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js([
+mix.scripts([
     'node_modules/flot/jquery.flot.js',
     'node_modules/flot/jquery.flot.time.js',
     'node_modules/flot/jquery.flot.categories.js'
 ], 
-'public/vendor/flot/flot.bundle.js');
+'public/vendor/flot/flot.bundle.js')
+        .scripts(['node_modules/sigma/build/sigma.min.js'],'public/vendor/sigma/sigma.min.js');
