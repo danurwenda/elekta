@@ -111,30 +111,6 @@ return [
                     'url' => 'sosmed/facebook',
                     'icon' => 'facebook'
                 ],
-//                [
-//                    'text'    => 'Level One',
-//                    'url'     => '#',
-//                    'submenu' => [
-//                        [
-//                            'text' => 'Level Two',
-//                            'url'  => '#',
-//                        ],
-//                        [
-//                            'text'    => 'Level Two',
-//                            'url'     => '#',
-//                            'submenu' => [
-//                                [
-//                                    'text' => 'Level Three',
-//                                    'url'  => '#',
-//                                ],
-//                                [
-//                                    'text' => 'Level Three',
-//                                    'url'  => '#',
-//                                ],
-//                            ],
-//                        ],
-//                    ],
-//                ],
                 [
                     'text' => 'Twitter',
                     'url' => 'sosmed/twitter',
@@ -144,6 +120,11 @@ return [
                     'text' => 'Youtube',
                     'url' => 'sosmed/youtube',
                     'icon' => 'youtube'
+                ],
+                [
+                    'text' => 'GPlus',
+                    'url' => 'sosmed/gplus',
+                    'icon' => 'google-plus'
                 ],
                 [
                     'text' => 'Instagram',
