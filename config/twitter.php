@@ -1,30 +1,35 @@
 <?php
 
 return [
-    'start_fetch' => 1518368400, // 12 feb 2018
-    'app_id' => env('FACEBOOK_APP_ID', ''),
-    'app_secret' => env('FACEBOOK_APP_SECRET', ''),
-    'token' => env('FACEBOOK_APP_TOKEN', ''),
-    'page_collection_prefix'=>'FBPage',
-    'news_collection_prefix'=>'FBNews',
+    'user_collection_prefix'=>'Twitter',
     'parties' => [
         //khofifah
         'khofifah' =>
         [
             'name' => 'Khofifah',
-            'pages' => ['khofifahemiljatim', 'KhofifahdanEmil']
+            'screen_name' => 'KhofifahIP',
+            'color'=>[31,190,214]
         ],
         //ipul
         'gusipul' =>
         [
             'name' => 'Gus Ipul',
-            'pages' => ['jatimsedulur']
-        ]
-    ],
-    'keywords'=>['Emil Dardak','Puti ','Khofifah ','Gus Ipul'],
-    'newspages'=>[
-        'detikcom',
-        'KompasTV',
-        'KOMPAScom'
+            'screen_name' => 'gusipul4',
+            'color'=>[255,0,0]
+        ],
+        //emil
+        'emil' =>
+        [
+            'name' => 'Emil Dardak',
+            'screen_name' => 'EmilDardak',
+            'color'=>[0,0,255]
+        ],
+        //puti
+        'puti' =>
+        [
+            'name' => 'Puti',
+            'screen_name' => 'GunturPuti',
+            'color'=>[255,125,125]
+        ],
     ]
 ];
