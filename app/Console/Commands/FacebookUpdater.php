@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use App\Models\GroupInfo;
+use App\Models\Facebook\GroupInfo;
 use Facebook\Facebook;
 
 class FacebookUpdater extends Command {
@@ -234,12 +234,6 @@ class FacebookUpdater extends Command {
         if (isset($pArr['shares']) || array_key_exists('shares', $pArr)) {
             $pArr['interaction'] += $pArr['shares']['count'];
         }
-        /**
-         * INSERT $post INTO DB
-         * note that below, we use DB::collection()->insert() method
-         * instead of Eloquent::create()it forces us to explicitly 
-         * convert DateTime into ISODate
-         * which is used internally by Mongo */
         $pArr['created_time'] = new \MongoDB\BSON\UTCDateTime($pArr['created_time']);
         return $pArr;
     }

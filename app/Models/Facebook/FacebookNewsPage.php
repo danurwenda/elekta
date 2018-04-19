@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Facebook;
 
 use Illuminate\Support\Facades\DB;
 

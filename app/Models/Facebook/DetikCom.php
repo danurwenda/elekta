@@ -1,6 +1,6 @@
-<?php namespace App\Models;
+<?php namespace App\Models\Facebook;
 
-use App\Models\FacebookNewsPage as News;
+use App\Models\Facebook\FacebookNewsPage as News;
 
 /**
  * Represents a collection of all fb post from ipul-based fanpages

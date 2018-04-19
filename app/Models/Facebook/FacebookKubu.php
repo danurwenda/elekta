@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Facebook;
 
 use Illuminate\Support\Facades\DB;
 
@@ -61,7 +61,7 @@ class FacebookKubu {
     }
 
     public static function getPastDay($i) {
-        $today = strtotime('today');
+        $today = strtotime('today'); // REMEMBER that strtotime will return UTC
         $ret = 0;
         try {
             $kubu = config("facebook.parties." . (new static)->getParty());

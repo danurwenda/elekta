@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\GroupInfo;
-use App\Models\Khofifah;
-use App\Models\Ipul;
+use App\Models\Facebook\GroupInfo;
+use App\Models\Facebook\Khofifah;
+use App\Models\Facebook\Ipul;
 
 /**
  * 
