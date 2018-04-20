@@ -51,7 +51,10 @@ class fetchgplus extends Command {
         $json = $plus->activities->search('khofifah', $params);
         $json = json_encode($json['items']);
         $json = json_decode($json, TRUE);
+
         foreach ($json as $data) {
+            $data['updated'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($data['updated']));
+            $data['published'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($data['published']));
             \DB::connection('mongodb')->collection('gpluskhofifah')->where('id', $data['id'])->update($data, ['upsert' => true]);
         }
 
@@ -59,6 +62,8 @@ class fetchgplus extends Command {
         $json = json_encode($json['items']);
         $json = json_decode($json, TRUE);
         foreach ($json as $data) {
+            $data['updated'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($data['updated']));
+            $data['published'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($data['published']));
             \DB::connection('mongodb')->collection('gplusgusipul')->where('id', $data['id'])->update($data, ['upsert' => true]);
         }
 
@@ -66,6 +71,8 @@ class fetchgplus extends Command {
         $json = json_encode($json['items']);
         $json = json_decode($json, TRUE);
         foreach ($json as $data) {
+            $data['updated'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($data['updated']));
+            $data['published'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($data['published']));
             \DB::connection('mongodb')->collection('gplusemil')->where('id', $data['id'])->update($data, ['upsert' => true]);
         }
 
@@ -73,6 +80,8 @@ class fetchgplus extends Command {
         $json = json_encode($json['items']);
         $json = json_decode($json, TRUE);
         foreach ($json as $data) {
+            $data['updated'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($data['updated']));
+            $data['published'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($data['published']));
             \DB::connection('mongodb')->collection('gplusputi')->where('id', $data['id'])->update($data, ['upsert' => true]);
         }
 

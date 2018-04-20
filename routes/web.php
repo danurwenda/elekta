@@ -29,3 +29,6 @@ Route::get('sosmed/twitter', 'TwitterController@getIndex')->name('twitter');
 // MAINSTREAM MEDIA
 
 // YOUTUBE
+Route::get('sosmed/youtube', 'YoutubeController@getIndex');
+// GPLUS
+Route::get('sosmed/gplus', 'GplusController@getIndex');

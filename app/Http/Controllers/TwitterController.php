@@ -17,7 +17,7 @@ class TwitterController extends Controller {
         $ipul = TwitterController::getUserCount(3);
         $puti = TwitterController::getUserCount(4);
         return view('pages.sosmed.twitter', [
-            'timestamp'=> UserInfo::lastUpdate(),
+            'timestamp' => UserInfo::lastUpdate(),
             'khof' => $khof, 'ipul' => $ipul, 'emil' => $emil, 'puti' => $puti]);
     }
 

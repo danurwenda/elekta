@@ -49,6 +49,7 @@ class fetchyoutube extends Command {
         foreach ($search['results'] as $data) {
             $newdata = json_encode($data);
             $newdata = json_decode($newdata, TRUE);
+            $newdata['snippet']['publishedAt'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($newdata['snippet']['publishedAt']));
             \DB::connection('mongodb')->collection('youtubekhofifah')->where('id', $newdata['id'])->update($newdata, ['upsert' => true]);
         }
 
@@ -64,6 +65,7 @@ class fetchyoutube extends Command {
         foreach ($search['results'] as $data) {
             $newdata = json_encode($data);
             $newdata = json_decode($newdata, TRUE);
+            $newdata['snippet']['publishedAt'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($newdata['snippet']['publishedAt']));
             \DB::connection('mongodb')->collection('youtubegusipul')->where('id', $newdata['id'])->update($newdata, ['upsert' => true]);
         }
 
@@ -79,6 +81,7 @@ class fetchyoutube extends Command {
         foreach ($search['results'] as $data) {
             $newdata = json_encode($data);
             $newdata = json_decode($newdata, TRUE);
+            $newdata['snippet']['publishedAt'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($newdata['snippet']['publishedAt']));
             \DB::connection('mongodb')->collection('youtubeemil')->where('id', $newdata['id'])->update($newdata, ['upsert' => true]);
         }
 
@@ -94,6 +97,7 @@ class fetchyoutube extends Command {
         foreach ($search['results'] as $data) {
             $newdata = json_encode($data);
             $newdata = json_decode($newdata, TRUE);
+            $newdata['snippet']['publishedAt'] = new \MongoDB\BSON\UTCDateTime(1000*strtotime($newdata['snippet']['publishedAt']));
             \DB::connection('mongodb')->collection('youtubeputi')->where('id', $newdata['id'])->update($newdata, ['upsert' => true]);
         }
 
