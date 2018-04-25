@@ -11,12 +11,14 @@
     },
     "devDependencies": {
         "cross-env": "^5.1.4",
-        "laravel-mix": "^2.0",
+        "laravel-mix": "^2.1.11",
         "pngquant-bin": "^4.0.0"
     },
     "dependencies": {
+        "amcharts3": "github:amcharts/amcharts3",
         "flot": "^0.8.0-alpha",
-        "npm": "^5.7.1",
+        "moment": "^2.22.1",
+        "npm": "^6.0.0",
         "sigma": "^1.2.1"
     }
 }

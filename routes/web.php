@@ -27,8 +27,12 @@ Route::get('sosmed/facebook', 'FacebookController@getIndex')->name('facebook');
 Route::get('sosmed/twitter', 'TwitterController@getIndex')->name('twitter');
 
 // MAINSTREAM MEDIA
-
+Route::get('mainmedia', 'MainmediaController@getIndex')->name('mainmedia');
+Route::get('mainmedia/khofifah', 'MainmediaController@getMediaKhofifah');
+Route::get('mainmedia/gusipul', 'MainmediaController@getMediaIpul');
+Route::get('mainmedia/emil', 'MainmediaController@getMediaEmil');
+Route::get('mainmedia/puti', 'MainmediaController@getMediaPuti');
 // YOUTUBE
-Route::get('sosmed/youtube', 'YoutubeController@getIndex');
+Route::get('sosmed/youtube', 'YoutubeController@getIndex')->name('youtube');
 // GPLUS
-Route::get('sosmed/gplus', 'GplusController@getIndex');
+Route::get('sosmed/gplus', 'GplusController@getIndex')->name('gplus');

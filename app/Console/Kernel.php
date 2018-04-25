@@ -28,10 +28,10 @@ class Kernel extends ConsoleKernel {
      * @return void
      */
     protected function schedule(Schedule $schedule) {
-//        $schedule->command('fetch:galert')->everyFifteenMinutes();
+        $schedule->command('fetch:galert')->hourly();
         $schedule->command('fetch:youtube')->hourly();
         $schedule->command('fetch:gplus')->hourly();
-        $schedule->command('facebook:update')->everyFifteenMinutes();
+        $schedule->command('facebook:update')->hourly();
         $schedule->command('fetch:twitter')->hourly();
         $schedule->command('fetch:graph')->hourly();
     }

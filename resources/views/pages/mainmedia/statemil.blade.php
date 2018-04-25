@@ -2,11 +2,11 @@
 <script>
 
 
-    var chartmediaputi = AmCharts.makeChart("chartdivmediaputi", {
+    var chartmediaemil = AmCharts.makeChart("chartdivmediaemil", {
     "type": "serial",
             "theme": "light",
             "dataProvider":
-    {!! \App\Http\Controllers\YoutubeController::getUserCount(4)!!},
+    {!! \App\Http\Controllers\MainmediaController::getMediaCount(3)!!},
             "gridAboveGraphs": true,
             "startDuration": 1, "valueAxes": [ {
             "minimum": 0
@@ -23,7 +23,7 @@
                     "cursorAlpha": 0,
                     "zoomable": true
             },
-            "categoryField": "username",
+            "categoryField": "media",
             "categoryAxis": {
             "gridPosition": "start",
                     "gridAlpha": 0,
@@ -36,4 +36,4 @@
     });
 </script>
 @append
-<div id="chartdivmediaputi" style="width: 100%; height: 400px;"></div>
+<div id="chartdivmediaemil" style="width: 100%; height: 400px;"></div>

@@ -1,4 +1,6 @@
 @section('js')
+
+<!-- Chart code -->
 <script>
     AmCharts.addInitHandler(function(chart) {
 
@@ -73,19 +75,19 @@
             "dataProvider": [ {
             "color" : "#1FBED6",
                     "Cagub": "Khofifah",
-                    "Jumlah": {{ \App\Http\Controllers\YoutubeController::getToday(1)}}
+                    "Jumlah": {{ \App\Http\Controllers\MainmediaController::getToday(1)}}
             }, {
             "color" : "blue",
                     "Cagub": "Emil",
-                    "Jumlah": {{ \App\Http\Controllers\YoutubeController::getToday(2)}}
+                    "Jumlah": {{ \App\Http\Controllers\MainmediaController::getToday(3)}}
             }, {
             "color" : "red",
                     "Cagub": "Gus Ipul",
-                    "Jumlah": {{ \App\Http\Controllers\YoutubeController::getToday(3)}}
+                    "Jumlah": {{ \App\Http\Controllers\MainmediaController::getToday(2)}}
             }, {
             "color" : "pink",
                     "Cagub": "Puti",
-                    "Jumlah": {{ \App\Http\Controllers\YoutubeController::getToday(4)}}
+                    "Jumlah": {{ \App\Http\Controllers\MainmediaController::getToday(4)}}
             }],
             "valueAxes": [ {
             "minimum": 0,
@@ -123,4 +125,5 @@
     });
 </script>
 @append
+
 <div id="chartdivtoday" style="width: 100%; height: 400px;"></div>

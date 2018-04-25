@@ -8,7 +8,7 @@
             "marginRight": 80,
             "autoMarginOffset": 20,
             "marginTop":20,
-            "dataProvider": {!! \App\Http\Controllers\TwitterController::getWeeks() !!},
+            "dataProvider": {!! \App\Http\Controllers\MainmediaController::getWeeks() !!},
             "valueAxes": [{
             "id": "v1",
                     "axisAlpha": 0.1

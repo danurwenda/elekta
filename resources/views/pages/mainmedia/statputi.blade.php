@@ -6,7 +6,7 @@
     "type": "serial",
             "theme": "light",
             "dataProvider":
-    {!! \App\Http\Controllers\YoutubeController::getUserCount(4)!!},
+    {!! \App\Http\Controllers\MainmediaController::getMediaCount(4)!!},
             "gridAboveGraphs": true,
             "startDuration": 1, "valueAxes": [ {
             "minimum": 0
@@ -23,7 +23,7 @@
                     "cursorAlpha": 0,
                     "zoomable": true
             },
-            "categoryField": "username",
+            "categoryField": "media",
             "categoryAxis": {
             "gridPosition": "start",
                     "gridAlpha": 0,

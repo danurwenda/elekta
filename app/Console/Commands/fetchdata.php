@@ -35,57 +35,20 @@ class fetchdata extends Command {
      * @return mixed
      */
     public function handle() {
-        //
-        $url = 'https://www.google.com/alerts/feeds/17433293890439964009/8778119014002706904'; //khof
-        $xml_string = file_get_contents($url);
-        $xml = simplexml_load_string($xml_string);
-        $json = json_encode($xml);
-        $json = json_decode($json, TRUE);
-        foreach ($json['entry'] as $data) {
-            $media = str_after($data['link']['@attributes']['href'], 'https://www.google.com/url?rct=j&sa=t&url=');
-            $media = str_after($media, '://');
-            $media = str_before($media, '/');
-            $data['media'] = $media;
-            \DB::connection('mongodb')->collection('khofifah')->where('id', $data['id'])->update($data, ['upsert' => true]);
-        }
-
-        $url = 'https://www.google.com/alerts/feeds/17433293890439964009/14634290886364729844'; //ipul
-        $xml_string = file_get_contents($url);
-        $xml = simplexml_load_string($xml_string);
-        $json = json_encode($xml);
-        $json = json_decode($json, TRUE);
-        foreach ($json['entry'] as $data) {
-            $media = str_after($data['link']['@attributes']['href'], 'https://www.google.com/url?rct=j&sa=t&url=');
-            $media = str_after($media, '://');
-            $media = str_before($media, '/');
-            $data['media'] = $media;
-            \DB::connection('mongodb')->collection('gusipul')->where('id', $data['id'])->update($data, ['upsert' => true]);
-        }
-
-        $url = 'https://www.google.com/alerts/feeds/00126744657586499831/9896309034371372850'; //emil
-        $xml_string = file_get_contents($url);
-        $xml = simplexml_load_string($xml_string);
-        $json = json_encode($xml);
-        $json = json_decode($json, TRUE);
-        foreach ($json['entry'] as $data) {
-            $media = str_after($data['link']['@attributes']['href'], 'https://www.google.com/url?rct=j&sa=t&url=');
-            $media = str_after($media, '://');
-            $media = str_before($media, '/');
-            $data['media'] = $media;
-            \DB::connection('mongodb')->collection('emil')->where('id', $data['id'])->update($data, ['upsert' => true]);
-        }
-
-        $url = 'https://www.google.com/alerts/feeds/00126744657586499831/16017706715267162769'; //puti
-        $xml_string = file_get_contents($url);
-        $xml = simplexml_load_string($xml_string);
-        $json = json_encode($xml);
-        $json = json_decode($json, TRUE);
-        foreach ($json['entry'] as $data) {
-            $media = str_after($data['link']['@attributes']['href'], 'https://www.google.com/url?rct=j&sa=t&url=');
-            $media = str_after($media, '://');
-            $media = str_before($media, '/');
-            $data['media'] = $media;
-            \DB::connection('mongodb')->collection('puti')->where('id', $data['id'])->update($data, ['upsert' => true]);
+        foreach (config('galert.objects') as $p => $url) {
+            $xml_string = file_get_contents($url);
+            $xml = simplexml_load_string($xml_string);
+            $json = json_encode($xml);
+            $json = json_decode($json, TRUE);
+            foreach ($json['entry'] as $data) {
+                $media = str_after($data['link']['@attributes']['href'], 'https://www.google.com/url?rct=j&sa=t&url=');
+                $media = str_after($media, '://');
+                $media = str_before($media, '/');
+                $data['media'] = $media;
+                $data['published']=new \MongoDB\BSON\UTCDateTime(1000* strtotime($data['published']));
+                $data['updated']=new \MongoDB\BSON\UTCDateTime(1000* strtotime($data['updated']));
+                \DB::connection('mongodb')->collection('galert' . $p)->where('id', $data['id'])->update($data, ['upsert' => true]);
+            }
         }
         $this->info('Success!');
     }

@@ -1,11 +1,12 @@
 @extends('adminlte::page')
-@section('header', 'Youtube')
+@section('header', 'MainMedia')
 @section('description', 'last update')
 
 @section('js')
 <!-- Resources -->
 <script src="{{{ URL::asset('vendor/amcharts/amcharts.bundle.js')}}}"></script>
 @endsection
+
 @section('content')
 <div class="row">
     <div class="col-md-6">
@@ -22,7 +23,7 @@
             </div>
             <div class="box-body">
                 <div>
-                    @include('pages.sosmed.youtube.today')
+                    @include('pages.mainmedia.today')
                 </div>
             </div>
             <!-- /.box-body -->
@@ -32,7 +33,7 @@
         <!-- DONUT CHART -->
         <div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title">Channel Teraktif (Khofifah-Emil)</h3>
+                <h3 class="box-title">Media Teraktif (Khofifah-Emil)</h3>
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -48,16 +49,17 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab_1k">
-                            @include('pages.sosmed.youtube.userkhof')
+                            @include('pages.mainmedia.statkhof')
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="tab_2k">
-                            @include('pages.sosmed.youtube.useremil')
+                            @include('pages.mainmedia.statemil')
                         </div>
                         <!-- /.tab-pane -->
                     </div>
                     <!-- /.tab-content -->
                 </div>
+
             </div>
             <!-- /.box-body -->
         </div>
@@ -78,8 +80,8 @@
                 </div>
             </div>
             <div class="box-body">
-                <div>
-                    @include('pages.sosmed.youtube.weeks')
+                <div class="chart">
+                    @include('pages.mainmedia.weeks')
                 </div>
             </div>
             <!-- /.box-body -->
@@ -89,7 +91,7 @@
         <!-- BAR CHART -->
         <div class="box box-success">
             <div class="box-header with-border">
-                <h3 class="box-title">Channel Teraktif (Gus Ipul-Puti)</h3>
+                <h3 class="box-title">Media Teraktif (Gus Ipul-Puti)</h3>
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -106,11 +108,11 @@
                         </ul>
                         <div class="tab-content">
                             <div class="tab-pane active" id="tab_1g">
-                                @include('pages.sosmed.youtube.useripul')
+                                @include('pages.mainmedia.statipul')
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_2g">
-                                @include('pages.sosmed.youtube.userputi')
+                                @include('pages.mainmedia.statputi')
                             </div>
                             <!-- /.tab-pane -->
                         </div>

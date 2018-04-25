@@ -140,7 +140,8 @@ return [
                 [
                     'text' => 'Statistik',
                     'url' => 'mainmedia',
-                    'icon' => 'newspaper'
+                    'active'=>['mainmedia'],
+                    'icon' => 'newspaper-o'
                 ],
                 [
                     'text' => 'Khofifah',
@@ -148,8 +149,18 @@ return [
                     'icon' => 'user-plus'
                 ],
                 [
+                    'text' => 'Emil',
+                    'url' => 'mainmedia/emil',
+                    'icon' => 'user-plus'
+                ],
+                [
                     'text' => 'Gus Ipul',
                     'url' => 'mainmedia/gusipul',
+                    'icon' => 'user-secret'
+                ],
+                [
+                    'text' => 'Puti',
+                    'url' => 'mainmedia/puti',
                     'icon' => 'user-secret'
                 ],
             ],
@@ -222,7 +233,7 @@ return [
       |
      */
     'plugins' => [
-        'datatables' => true,
-        'select2' => true
+//        'datatables' => true,
+//        'select2' => true
     ],
 ];

@@ -3,20 +3,15 @@
 @section('description')
 last update : <span id='tw-last-update' style='display: none'>{{ $timestamp }}</span>
 @stop
-@section('content')
-<!-- Resources -->
-<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-<script src="https://www.amcharts.com/lib/3/serial.js"></script>
-<script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 @section('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment.min.js"></script>
+<script src="{{{ URL::asset('vendor/moment/moment.min.js')}}}"></script>
 <script>
     $('#tw-last-update').show().html(moment.unix($('#tw-last-update').html()).format('HH:mm:ss DD-MMM-YYYY'));
 </script>
+<script src="{{{ URL::asset('vendor/amcharts/amcharts.bundle.js')}}}"></script>
 @stop
 
+@section('content')
 <div class="row">
     <div class="col-md-6">
         <!-- AREA CHART -->
