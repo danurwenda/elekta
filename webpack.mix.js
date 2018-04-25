@@ -21,6 +21,7 @@ mix.scripts([
 'public/vendor/moment/moment.min.js')
         .scripts([
     'node_modules/amcharts3/amcharts/amcharts.js',
+    'node_modules/amcharts3/amcharts/pie.js',
     'node_modules/amcharts3/amcharts/serial.js',
     'node_modules/amcharts3/amcharts/themes/light.js',
 ],

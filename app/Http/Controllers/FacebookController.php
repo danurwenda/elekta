@@ -24,7 +24,7 @@ class FacebookController extends Controller {
     public function getIndex() {
         return view('pages.sosmed.facebook', [
             //timestamp data diambil terakhir
-            'timestamp'=> GroupInfo::lastUpdate(),
+            'timestamp' => GroupInfo::lastUpdate(),
             //data yang diambil
             //total post hari ini di masing-masing fanpage
             'totalkhof' => Khofifah::totalPostNum(),
@@ -40,7 +40,7 @@ class FacebookController extends Controller {
             'followeripul' => Ipul::getFollower()
         ]);
     }
-
+    
     public function updateData() {
         \Artisan::call('facebook:update', []);
         return redirect()->route('facebook');
@@ -64,7 +64,7 @@ class FacebookController extends Controller {
         }
     }
 
-    public static function getAllPostNum($page) {
+    public static function countAll($page) {
         switch ($page) {
             case 1:
                 return Khofifah::totalPostNum();

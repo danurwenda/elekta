@@ -10,8 +10,36 @@ use App\Models\Gplus\Ipul;
 
 class GplusController extends Controller {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function getIndex() {
         return view('pages.sosmed.gplus');
+    }
+
+    public static function countAll($id) {
+        switch ($id) {
+            case 1:
+                $gplus = Khofifah::count();
+                break;
+            case 2:
+                $gplus = Ipul::count();
+                break;
+            case 3:
+                $gplus = Emil::count();
+                break;
+            case 4:
+                $gplus = Puti::count();
+                break;
+        }
+
+        return $gplus;
     }
 
     public static function getToday($id) {

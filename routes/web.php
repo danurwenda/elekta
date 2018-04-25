@@ -36,3 +36,6 @@ Route::get('mainmedia/puti', 'MainmediaController@getMediaPuti');
 Route::get('sosmed/youtube', 'YoutubeController@getIndex')->name('youtube');
 // GPLUS
 Route::get('sosmed/gplus', 'GplusController@getIndex')->name('gplus');
+
+// ANALISIS
+Route::get('analisis', 'AnalisisController@getIndex')->name('analisis');

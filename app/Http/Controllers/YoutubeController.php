@@ -10,8 +10,36 @@ use App\Models\Youtube\Ipul;
 
 class YoutubeController extends Controller {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function getIndex() {
         return view('pages.sosmed.youtube');
+    }
+
+    public static function countAll($id) {
+        switch ($id) {
+            case 1:
+                $youtube = Khofifah::count();
+                break;
+            case 2:
+                $youtube = Ipul::count();
+                break;
+            case 3:
+                $youtube = Emil::count();
+                break;
+            case 4:
+                $youtube = Puti::count();
+                break;
+        }
+
+        return $youtube;
     }
 
     public static function getToday($id) {
@@ -182,4 +210,5 @@ class YoutubeController extends Controller {
         }
         return json_encode($data2);
     }
+
 }

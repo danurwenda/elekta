@@ -11,6 +11,10 @@ use App\Models\Twitter\UserInfo;
 
 class TwitterController extends Controller {
 
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function getIndex() {
         $khof = TwitterController::getUserCount(1);
         $emil = TwitterController::getUserCount(2);
@@ -19,6 +23,25 @@ class TwitterController extends Controller {
         return view('pages.sosmed.twitter', [
             'timestamp' => UserInfo::lastUpdate(),
             'khof' => $khof, 'ipul' => $ipul, 'emil' => $emil, 'puti' => $puti]);
+    }
+
+    public static function countAll($id) {
+        switch ($id) {
+            case 1:
+                $twitter = Khofifah::count();
+                break;
+            case 2:
+                $twitter = Ipul::count();
+                break;
+            case 3:
+                $twitter = Emil::count();
+                break;
+            case 4:
+                $twitter = Puti::count();
+                break;
+        }
+
+        return $twitter;
     }
 
     public static function getToday($id) {

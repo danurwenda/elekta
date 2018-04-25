@@ -10,6 +10,15 @@ use App\Http\Controllers\Controller;
 
 class MainmediaController extends Controller {
 
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function getIndex() {
         return view('pages.mainmedia');
     }
@@ -41,6 +50,26 @@ class MainmediaController extends Controller {
         //$khofemil = $this->getJSON('https://www.google.com/alerts/feeds/17433293890439964009/5985084613932103640');
         //$ipulputi = $this->getJSON('https://www.google.com/alerts/feeds/17433293890439964009/17941242850285220973');
         return view('mainstream', ['khof' => $khof, 'ipul' => $ipul]);
+    }
+
+    public static function countAll($id) {
+        switch ($id) {
+            case 1:
+                $news = Khofifah::count();
+                break;
+            case 2:
+                $news = Ipul::count();
+                break;
+            case 3:
+                $news = Emil::count();
+                break;
+            case 4:
+                $news = Puti::count();
+                break;
+        }
+
+
+        return $news;
     }
 
     public static function getJSON($url) {
@@ -129,7 +158,7 @@ class MainmediaController extends Controller {
     public static function getMediaCount($id) {
         $today = \Carbon\Carbon::today(config('app.timezone'));
         $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
-       switch ($id) {
+        switch ($id) {
             case 1:
                 $json = Khofifah::raw(function($collection) use ($today, $tomorrow) {
                             return MainmediaController::mediaCountAggregate($collection, $today, $tomorrow);
