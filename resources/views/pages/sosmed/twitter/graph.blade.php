@@ -1,14 +1,3 @@
-<script>
-    var
-            g = {!! \App\Http\Controllers\SigmaController::getGraph('khofifah') !!}
-    ,
-            g2 = {!! \App\Http\Controllers\SigmaController::getGraph('gusipul') !!}
-    ,
-            g3 = {!! \App\Http\Controllers\SigmaController::getGraph('emil') !!}
-    ,
-            g4 = {!! \App\Http\Controllers\SigmaController::getGraph('puti') !!}
-    ;</script>
-<script src="{{{ URL::asset('vendor/sigma/sigma.min.js')}}}"></script>
 <style>
     #graph-container {
         top: 10;
@@ -125,8 +114,19 @@
 </div>
 
 
-
-</div>
+@section('js')
+<script>
+    var
+            g = {!! \App\Http\Controllers\SigmaController::getGraph('khofifah') !!}
+    ,
+            g2 = {!! \App\Http\Controllers\SigmaController::getGraph('gusipul') !!}
+    ,
+            g3 = {!! \App\Http\Controllers\SigmaController::getGraph('emil') !!}
+    ,
+            g4 = {!! \App\Http\Controllers\SigmaController::getGraph('puti') !!}
+    ;
+</script>
+<script src="{{{ URL::asset('vendor/sigma/sigma.min.js')}}}"></script>
 <script id="example-content" type="text/javascript">
 
     let s = new sigma({
@@ -165,4 +165,4 @@
 
 
 </script>
-
+@append

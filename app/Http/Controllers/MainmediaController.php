@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Mainmedia\Emil;
 use App\Models\Mainmedia\Ipul;
 use App\Models\Mainmedia\Khofifah;
 use App\Models\Mainmedia\Puti;
-use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+
 
 class MainmediaController extends Controller {
 
@@ -89,8 +91,8 @@ class MainmediaController extends Controller {
     }
 
     public static function getToday($id) {
-        $today = \Carbon\Carbon::today(config('app.timezone'));
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
+        $today = Carbon::today(config('app.timezone'));
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
         switch ($id) {
             case 1:
                 $todaySum = Khofifah::whereBetween('published', [$today, $tomorrow])->get()->count();
@@ -109,26 +111,31 @@ class MainmediaController extends Controller {
 
         return $todaySum;
     }
-
-    public static function getYesterday($id) {
-        $yesterday = \Carbon\Carbon::now()->subDays(1)->toDateString();
+    
+    public static function getPastDay($id,$i){
+        $start = Carbon::today(config('app.timezone'))->subDays($i);
+        $end = Carbon::today(config('app.timezone'))->subDays($i-1);
         switch ($id) {
             case 1:
-                $yesterday = Khofifah::where('published', 'like', $yesterday . '%')->get()->count();
+                $todaySum = Khofifah::whereBetween('published', [$start, $end])->get()->count();
                 break;
             case 2:
-                $yesterday = Ipul::where('published', 'like', $yesterday . '%')->get()->count();
+                $todaySum = Emil::whereBetween('published', [$start, $end])->get()->count();
                 break;
             case 3:
-                $yesterday = Emil::where('published', 'like', $yesterday . '%')->get()->count();
+                $todaySum = Ipul::whereBetween('published', [$start, $end])->get()->count();
                 break;
             case 4:
-                $yesterday = Puti::where('published', 'like', $yesterday . '%')->get()->count();
+                $todaySum = Puti::whereBetween('published', [$start, $end])->get()->count();
                 break;
         }
 
 
-        return $yesterday;
+        return $todaySum;
+    }
+
+    public static function getYesterday($id) {
+        return MainmediaController::getPastDay($id,1);
     }
 
     private static function mediaCountAggregate($col, $start, $end) {
@@ -156,8 +163,8 @@ class MainmediaController extends Controller {
     }
 
     public static function getMediaCount($id) {
-        $today = \Carbon\Carbon::today(config('app.timezone'));
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
+        $today = Carbon::today(config('app.timezone'));
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
         switch ($id) {
             case 1:
                 $json = Khofifah::raw(function($collection) use ($today, $tomorrow) {
@@ -256,7 +263,7 @@ class MainmediaController extends Controller {
         $array = [];
         for ($i = 6; $i >= 0; $i--) {
             $new = [];
-            $new['date'] = \Carbon\Carbon::now()->subDays($i)->toDateString();
+            $new['date'] = Carbon::now()->subDays($i)->toDateString();
             $new['khofifah'] = 0;
             $new['ipul'] = 0;
             $new['emil'] = 0;
@@ -264,7 +271,7 @@ class MainmediaController extends Controller {
 
             foreach ($datakhof as $data) {
 
-                if ($data['_id.date'] == \Carbon\Carbon::now()->subDays($i)->toDateString()) {
+                if ($data['_id.date'] == Carbon::now()->subDays($i)->toDateString()) {
                     $new['khofifah'] += $data['khofifah'];
                     break;
                 }
@@ -272,7 +279,7 @@ class MainmediaController extends Controller {
 
             foreach ($dataipul as $data) {
 
-                if ($data['_id.date'] == \Carbon\Carbon::now()->subDays($i)->toDateString()) {
+                if ($data['_id.date'] == Carbon::now()->subDays($i)->toDateString()) {
                     $new['ipul'] += $data['ipul'];
                     break;
                 }
@@ -280,7 +287,7 @@ class MainmediaController extends Controller {
 
             foreach ($dataemil as $data) {
 
-                if ($data['_id.date'] == \Carbon\Carbon::now()->subDays($i)->toDateString()) {
+                if ($data['_id.date'] == Carbon::now()->subDays($i)->toDateString()) {
                     $new['emil'] += $data['emil'];
                     break;
                 }
@@ -288,7 +295,7 @@ class MainmediaController extends Controller {
 
             foreach ($dataputi as $data) {
 
-                if ($data['_id.date'] == \Carbon\Carbon::now()->subDays($i)->toDateString()) {
+                if ($data['_id.date'] == Carbon::now()->subDays($i)->toDateString()) {
                     $new['puti'] += $data['puti'];
                     break;
                 }

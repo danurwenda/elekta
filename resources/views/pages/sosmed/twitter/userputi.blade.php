@@ -6,7 +6,7 @@
 		<th><center>Posts</center></th>
 	</tr>
 	<tr>
-	@foreach ($puti as $data)
+	@foreach (\App\Http\Controllers\TwitterController::getUserCount(4) as $data)
 			<tr>
 				<td><center><span style="font-size:14px;">{{ $data['user'] }}</span></center></td>
 				<td><center><span style="font-size:14px;">{{ $data['follower'] }}</span></center></td>

@@ -7,7 +7,7 @@ use App\Models\Gplus\Emil;
 use App\Models\Gplus\Khofifah;
 use App\Models\Gplus\Puti;
 use App\Models\Gplus\Ipul;
-
+use Carbon\Carbon;
 class GplusController extends Controller {
 
     /**
@@ -43,8 +43,8 @@ class GplusController extends Controller {
     }
 
     public static function getToday($id) {
-        $today = \Carbon\Carbon::today(config('app.timezone'));
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
+        $today = Carbon::today(config('app.timezone'));
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
         switch ($id) {
             case 1:
                 $today = Khofifah::whereBetween('published', [$today, $tomorrow])->get()->count();
@@ -64,9 +64,35 @@ class GplusController extends Controller {
         return $today;
     }
 
+    public static function getPastDay($id, $i) {
+        $start = Carbon::today(config('app.timezone'))->subDays($i);
+        $end = Carbon::today(config('app.timezone'))->subDays($i - 1);
+        switch ($id) {
+            case 1:
+                $todaySum = Khofifah::whereBetween('published', [$start, $end])->get()->count();
+                break;
+            case 2:
+                $todaySum = Emil::whereBetween('published', [$start, $end])->get()->count();
+                break;
+            case 3:
+                $todaySum = Ipul::whereBetween('published', [$start, $end])->get()->count();
+                break;
+            case 4:
+                $todaySum = Puti::whereBetween('published', [$start, $end])->get()->count();
+                break;
+        }
+
+
+        return $todaySum;
+    }
+
+    public static function getYesterday($id) {
+        return GplusController::getPastDay($id, 1);
+    }
+
     private static function getWeekAggregation($collection) {
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
-        $sixDaysAgo = \Carbon\Carbon::tomorrow(config('app.timezone'))->subWeek();
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
+        $sixDaysAgo = Carbon::tomorrow(config('app.timezone'))->subWeek();
         return $collection->aggregate([
                     [
                         '$match' => [
@@ -104,7 +130,7 @@ class GplusController extends Controller {
         $array = [];
         for ($i = 6; $i >= 0; $i--) {
             $new = [];
-            $new['date'] = \Carbon\Carbon::now(config('app.timezone'))->subDays($i)->toDateString();
+            $new['date'] = Carbon::now(config('app.timezone'))->subDays($i)->toDateString();
             $new['khofifah'] = 0;
             $new['ipul'] = 0;
             $new['emil'] = 0;
@@ -174,8 +200,8 @@ class GplusController extends Controller {
     }
 
     public static function getUserCount($id) {
-        $today = \Carbon\Carbon::today(config('app.timezone'));
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
+        $today = Carbon::today(config('app.timezone'));
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
         switch ($id) {
             case 1:
                 $json = Khofifah::raw(function($collection) use ($today, $tomorrow) {

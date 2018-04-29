@@ -1,13 +1,15 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\TwitterController;
 use App\Models\Twitter\Emil;
 use App\Models\Twitter\Ipul;
 use App\Models\Twitter\Khofifah;
 use App\Models\Twitter\Puti;
 use App\Models\Twitter\UserInfo;
+use Carbon\Carbon;
+
 
 class TwitterController extends Controller {
 
@@ -16,13 +18,8 @@ class TwitterController extends Controller {
     }
 
     public function getIndex() {
-        $khof = TwitterController::getUserCount(1);
-        $emil = TwitterController::getUserCount(2);
-        $ipul = TwitterController::getUserCount(3);
-        $puti = TwitterController::getUserCount(4);
         return view('pages.sosmed.twitter', [
-            'timestamp' => UserInfo::lastUpdate(),
-            'khof' => $khof, 'ipul' => $ipul, 'emil' => $emil, 'puti' => $puti]);
+            'timestamp' => UserInfo::lastUpdate()]);
     }
 
     public static function countAll($id) {
@@ -45,8 +42,8 @@ class TwitterController extends Controller {
     }
 
     public static function getToday($id) {
-        $today = \Carbon\Carbon::today(config('app.timezone'));
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
+        $today = Carbon::today(config('app.timezone'));
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
         switch ($id) {
             case 1:
                 $todaySum = Khofifah::whereBetween('create_at', [$today, $tomorrow])->get()->count();
@@ -64,6 +61,32 @@ class TwitterController extends Controller {
 
 
         return $todaySum;
+    }
+
+    public static function getPastDay($id, $i) {
+        $start = Carbon::today(config('app.timezone'))->subDays($i);
+        $end = Carbon::today(config('app.timezone'))->subDays($i - 1);
+        switch ($id) {
+            case 1:
+                $todaySum = Khofifah::whereBetween('create_at', [$start, $end])->get()->count();
+                break;
+            case 2:
+                $todaySum = Emil::whereBetween('create_at', [$start, $end])->get()->count();
+                break;
+            case 3:
+                $todaySum = Ipul::whereBetween('create_at', [$start, $end])->get()->count();
+                break;
+            case 4:
+                $todaySum = Puti::whereBetween('create_at', [$start, $end])->get()->count();
+                break;
+        }
+
+
+        return $todaySum;
+    }
+
+    public static function getYesterday($id) {
+        return TwitterController::getPastDay($id, 1);
     }
 
     private static function hashCountAggregate($col, $start, $end) {
@@ -114,8 +137,8 @@ class TwitterController extends Controller {
     }
 
     public static function getUserCount($id) {
-        $today = \Carbon\Carbon::today(config('app.timezone'));
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
+        $today = Carbon::today(config('app.timezone'));
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
         switch ($id) {
             case 1:
                 $json = Khofifah::raw(function($collection) use ($today, $tomorrow) {
@@ -153,8 +176,8 @@ class TwitterController extends Controller {
     }
 
     public static function getHashtagCount($id) {
-        $today = \Carbon\Carbon::today(config('app.timezone'));
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
+        $today = Carbon::today(config('app.timezone'));
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
         switch ($id) {
             case 1:
                 $json = Khofifah::raw(function($collection) use($today, $tomorrow) {
@@ -202,8 +225,8 @@ class TwitterController extends Controller {
     }
 
     private static function getWeekAggregation($collection) {
-        $tomorrow = \Carbon\Carbon::tomorrow(config('app.timezone'));
-        $sixDaysAgo = \Carbon\Carbon::tomorrow(config('app.timezone'))->subWeek();
+        $tomorrow = Carbon::tomorrow(config('app.timezone'));
+        $sixDaysAgo = Carbon::tomorrow(config('app.timezone'))->subWeek();
         return $collection->aggregate([
                     [
                         '$match' => [
@@ -241,7 +264,7 @@ class TwitterController extends Controller {
         $array = [];
         for ($i = 6; $i >= 0; $i--) {
             $new = [];
-            $new['date'] = \Carbon\Carbon::now(config('app.timezone'))->subDays($i)->toDateString();
+            $new['date'] = Carbon::now(config('app.timezone'))->subDays($i)->toDateString();
             $new['khofifah'] = 0;
             $new['ipul'] = 0;
             $new['emil'] = 0;

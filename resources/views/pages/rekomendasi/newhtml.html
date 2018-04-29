@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Elekta</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <!-- Bootstrap 3.3.7 -->
+        <link rel="stylesheet" href="http://jatim.localhost/vendor/adminlte/vendor/bootstrap/dist/css/bootstrap.min.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="http://jatim.localhost/vendor/adminlte/vendor/font-awesome/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="http://jatim.localhost/vendor/adminlte/vendor/Ionicons/css/ionicons.min.css">
+
+
+        <!-- Theme style -->
+        <link rel="stylesheet" href="http://jatim.localhost/vendor/adminlte/dist/css/AdminLTE.min.css">
+
+
+        <link rel="stylesheet"
+              href="http://jatim.localhost/vendor/adminlte/dist/css/skins/skin-blue.min.css ">
+
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Google Font -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini ">
+
+        <div class="wrapper">
+
+            <!-- Main Header -->
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="http://jatim.localhost" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>EWS</b></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><b>Khof</b>EWS</span>
+                </a>
+
+                <!-- Header Navbar -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
+
+                            <!-- /.messages-menu -->
+
+                            <!-- Notifications Menu -->
+                            <li class="dropdown notifications-menu">
+                                <!-- Menu toggle button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning">1</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">EWS mendeteksi :</li>
+                                    <li>
+                                        <!-- Inner Menu: contains the notifications -->
+                                        <ul class="menu">
+                                            <li><!-- start notification -->
+                                                <a href="#">
+                                                    <i class="fa fa-users text-aqua"></i> GI melonjak 10% di twitter dalam 1 jam
+                                                </a>
+                                            </li>
+                                            <!-- end notification -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">View all</a></li>
+                                </ul>
+                            </li>
+                            <!-- Tasks Menu -->
+                            <li class="dropdown tasks-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-flag-o"></i>
+                                    <span class="label label-danger">1</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">EWS merekomendasikan :</li>
+                                    <li>
+                                        <!-- Inner menu: contains the tasks -->
+                                        <ul class="menu">
+                                            <li><!-- Task item -->
+                                                <a href="#">
+                                                    <!-- Task title and progress text -->
+                                                    <h3>
+                                                        KIP perlu menambah update instagran
+
+                                                    </h3>
+                                                    <!-- The progress bar -->
+
+                                                </a>
+                                            </li>
+                                            <!-- end task item -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="#">View all tasks</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- User Account Menu -->
+                            <li class="dropdown user user-menu">
+                                <!-- Menu Toggle Button -->
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <!-- The user image in the navbar-->
+                                    <img src="http://jatim.localhost/img/khof.jpg" class="user-image" alt="User Image">
+                                    <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                    <span class="hidden-xs">Tim Siber</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- The user image in the menu -->
+                                    <li class="user-header">
+                                        <img src="http://jatim.localhost/img/khof.jpg" class="img-circle" alt="User Image">
+
+                                        <p>
+                                            KhofEWS
+                                            <small>Tim Siber</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+
+                                        <!-- /.row -->
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="/editor" class="btn btn-default btn-flat">Editor</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="#" class="btn btn-default btn-flat"
+                                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                               >
+                                                <i class="fa fa-fw fa-power-off"></i> Log Out
+                                            </a>
+                                            <form id="logout-form" action="http://jatim.localhost/logout" method="POST" style="display: none;">
+                                                <input type="hidden" name="_token" value="Xz3C9PmXux7mWHJ39peEJKvni3XzTLqlu0RIbXyt">
+                                            </form>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel (optional) -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="http://jatim.localhost/img/khof.jpg" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p>Tim Siber</p>
+                            <!-- Status -->
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- Sidebar Menu -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        <li class="">
+                            <a href="http://jatim.localhost"
+                               >
+                                <i class="fa fa-fw fa-dashboard "></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"
+                               >
+                                <i class="fa fa-fw fa-comments "></i>
+                                <span>SosMed</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="">
+                                    <a href="http://jatim.localhost/sosmed/facebook"
+                                       >
+                                        <i class="fa fa-fw fa-facebook "></i>
+                                        <span>Facebook</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="http://jatim.localhost/sosmed/twitter"
+                                       >
+                                        <i class="fa fa-fw fa-twitter "></i>
+                                        <span>Twitter</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="http://jatim.localhost/sosmed/youtube"
+                                       >
+                                        <i class="fa fa-fw fa-youtube "></i>
+                                        <span>Youtube</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="http://jatim.localhost/sosmed/gplus"
+                                       >
+                                        <i class="fa fa-fw fa-google-plus "></i>
+                                        <span>GPlus</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="http://jatim.localhost/sosmed/instagram"
+                                       >
+                                        <i class="fa fa-fw fa-instagram "></i>
+                                        <span>Instagram</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#"
+                               >
+                                <i class="fa fa-fw fa-comments "></i>
+                                <span>MainMed</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li class="">
+                                    <a href="http://jatim.localhost/mainmedia"
+                                       >
+                                        <i class="fa fa-fw fa-newspaper-o "></i>
+                                        <span>Statistik</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="http://jatim.localhost/mainmedia/khofifah"
+                                       >
+                                        <i class="fa fa-fw fa-user-plus "></i>
+                                        <span>Khofifah</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="http://jatim.localhost/mainmedia/emil"
+                                       >
+                                        <i class="fa fa-fw fa-user-plus "></i>
+                                        <span>Emil</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="http://jatim.localhost/mainmedia/gusipul"
+                                       >
+                                        <i class="fa fa-fw fa-user-secret "></i>
+                                        <span>Gus Ipul</span>
+                                    </a>
+                                </li>
+                                <li class="">
+                                    <a href="http://jatim.localhost/mainmedia/puti"
+                                       >
+                                        <i class="fa fa-fw fa-user-secret "></i>
+                                        <span>Puti</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="http://jatim.localhost/analisis"
+                               >
+                                <i class="fa fa-fw fa-laptop "></i>
+                                <span>Analisis</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="http://jatim.localhost/rekomendasi"
+                               >
+                                <i class="fa fa-fw fa-pencil-square-o "></i>
+                                <span>Rekomendasi</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#"
+                               >
+                                <i class="fa fa-fw fa-map-o "></i>
+                                <span>Wilayah</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#"
+                               >
+                                <i class="fa fa-fw fa-wifi "></i>
+                                <span>Wifi-X</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#"
+                               >
+                                <i class="fa fa-fw fa-users "></i>
+                                <span>Survei</span>
+                            </a>
+                        </li>
+                        <li class="">
+                            <a href="#"
+                               >
+                                <i class="fa fa-fw fa-calendar "></i>
+                                <span>Agenda</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- /.sidebar-menu -->
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Analisis                    <small></small>
+                    </h1>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- AREA CHART -->
+                            <div class="box box-primary">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Hari Ini</h3>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <div id="chartdivtoday" style="width: 100%; height: 400px;"></div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                            <!-- DONUT CHART -->
+                            <div class="box box-danger">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Kumulatif</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <div class="box-body">
+                                    <div>
+                                        <div id="chartdivall" style="width: 100%; height: 400px;"></div>
+                                    </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+
+                        </div>
+
+                    </div>
+                    <!-- /.row -->
+
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+                    KhofifahEmil Jatim
+                </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; 2018 <a href="#">Penjuru Consulting</a>.</strong> All rights reserved.
+            </footer>
+            <div class="control-sidebar-bg"></div>
+        </div>
+        <!-- ./wrapper -->
+
+        <script src="http://jatim.localhost/vendor/adminlte/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="http://jatim.localhost/vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js"></script>
+        <script src="http://jatim.localhost/vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+
+
+        <script src="http://jatim.localhost/vendor/adminlte/dist/js/adminlte.min.js"></script>
+        <!-- Resources -->
+        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+        <script>
+                                                   var chart = AmCharts.makeChart("chartdivtoday", {
+                                                       "type": "serial",
+                                                       "theme": "light",
+                                                       "legend": {
+                                                           "horizontalGap": 10,
+                                                           "maxColumns": 1,
+                                                           "position": "right",
+                                                           "useGraphSettings": true,
+                                                           "markerSize": 10
+                                                       },
+                                                       "dataProvider": [
+                                                           {
+                                                               "Platform": "News",
+                                                               "khofifah": 0,
+                                                               "emil": 0,
+                                                               "gusipul": 0,
+                                                               "puti": 0
+                                                           }, {
+                                                               "Platform": "Facebook",
+                                                               "khofifah": 0,
+                                                               "gusipul": 0,
+                                                           }, {
+                                                               "Platform": "Twitter",
+                                                               "khofifah": 0,
+                                                               "emil": 0,
+                                                               "gusipul": 0,
+                                                               "puti": 0
+                                                           }, {
+                                                               "Platform": "Youtube",
+                                                               "khofifah": 0,
+                                                               "emil": 0,
+                                                               "gusipul": 0,
+                                                               "puti": 0
+                                                           }, {
+                                                               "Platform": "Google+",
+                                                               "khofifah": 0,
+                                                               "emil": 0,
+                                                               "gusipul": 0,
+                                                               "puti": 0
+                                                           }],
+                                                       "valueAxes": [{
+                                                               "stackType": "none",
+                                                               "axisAlpha": 0.3,
+                                                               "gridAlpha": 0
+                                                           }],
+                                                       "graphs": [{
+                                                               "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]([[percents]]%)</b></span>",
+                                                               "fillAlphas": 0.8,
+                                                               "labelText": "[[value]]",
+                                                               "lineAlpha": 0.3,
+                                                               "title": "Khofifah",
+                                                               "type": "column",
+                                                               "color": "#000000",
+                                                               "fillColors": "#1FBED6",
+                                                               "valueField": "khofifah"
+                                                           }, {
+                                                               "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]([[percents]]%)</b></span>",
+                                                               "fillAlphas": 0.8,
+                                                               "labelText": "[[value]]",
+                                                               "lineAlpha": 0.3,
+                                                               "title": "Emil",
+                                                               "type": "column",
+                                                               "color": "#000000",
+                                                               "fillColors": "blue",
+                                                               "valueField": "emil"
+                                                           }, {
+                                                               "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]([[percents]]%)</b></span>",
+                                                               "fillAlphas": 0.8,
+                                                               "labelText": "[[value]]",
+                                                               "lineAlpha": 0.3,
+                                                               "title": "Gus Ipul",
+                                                               "type": "column",
+                                                               "color": "#000000",
+                                                               "fillColors": "red",
+                                                               "valueField": "gusipul"
+                                                           }, {
+                                                               "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]([[percents]]%)</b></span>",
+                                                               "fillAlphas": 0.8,
+                                                               "labelText": "[[value]]",
+                                                               "lineAlpha": 0.3,
+                                                               "title": "Puti",
+                                                               "type": "column",
+                                                               "color": "#000000",
+                                                               "fillColors": "pink",
+                                                               "valueField": "puti"
+                                                           }],
+                                                       "categoryField": "Platform",
+                                                       "categoryAxis": {
+                                                           "gridPosition": "start",
+                                                           "axisAlpha": 0,
+                                                           "gridAlpha": 0,
+                                                           "position": "left"
+                                                       }
+
+                                                   });
+        </script>
+        <script>
+            var chartall = AmCharts.makeChart("chartdivall", {
+                "type": "serial",
+                "theme": "light",
+                "legend": {
+                    "horizontalGap": 10,
+                    "maxColumns": 1,
+                    "position": "right",
+                    "useGraphSettings": true,
+                    "markerSize": 10
+                },
+                "dataProvider": [
+                    {
+                        "Platform": "News",
+                        "khofifah": 57,
+                        "emil": 57,
+                        "gusipul": 86,
+                        "puti": 78
+                    }, {
+                        "Platform": "Facebook",
+                        "khofifah": 97,
+                        "gusipul": 200,
+                    }, {
+                        "Platform": "Twitter",
+                        "khofifah": 5271,
+                        "emil": 4321,
+                        "gusipul": 2420,
+                        "puti": 16841
+                    }, {
+                        "Platform": "Youtube",
+                        "khofifah": 960,
+                        "emil": 215,
+                        "gusipul": 757,
+                        "puti": 301
+                    }, {
+                        "Platform": "Google+",
+                        "khofifah": 984,
+                        "emil": 531,
+                        "gusipul": 595,
+                        "puti": 138
+                    }],
+                "valueAxes": [{
+                        "stackType": "none",
+                        "axisAlpha": 0.3,
+                        "gridAlpha": 0
+                    }],
+                "graphs": [{
+                        "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]([[percents]]%)</b></span>",
+                        "fillAlphas": 0.8,
+                        "labelText": "[[value]]",
+                        "lineAlpha": 0.3,
+                        "title": "Khofifah",
+                        "type": "column",
+                        "color": "#000000",
+                        "fillColors": "#1FBED6",
+                        "valueField": "khofifah"
+                    }, {
+                        "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]([[percents]]%)</b></span>",
+                        "fillAlphas": 0.8,
+                        "labelText": "[[value]]",
+                        "lineAlpha": 0.3,
+                        "title": "Emil",
+                        "type": "column",
+                        "color": "#000000",
+                        "fillColors": "blue",
+                        "valueField": "emil"
+                    }, {
+                        "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]([[percents]]%)</b></span>",
+                        "fillAlphas": 0.8,
+                        "labelText": "[[value]]",
+                        "lineAlpha": 0.3,
+                        "title": "Gus Ipul",
+                        "type": "column",
+                        "color": "#000000",
+                        "fillColors": "red",
+                        "valueField": "gusipul"
+                    }, {
+                        "balloonText": "<b>[[title]]</b><br><span style='font-size:14px'>[[category]]: <b>[[value]]([[percents]]%)</b></span>",
+                        "fillAlphas": 0.8,
+                        "labelText": "[[value]]",
+                        "lineAlpha": 0.3,
+                        "title": "Puti",
+                        "type": "column",
+                        "color": "#000000",
+                        "fillColors": "pink",
+                        "valueField": "puti"
+                    }],
+                "categoryField": "Platform",
+                "categoryAxis": {
+                    "gridPosition": "start",
+                    "axisAlpha": 0,
+                    "gridAlpha": 0,
+                    "position": "left"
+                }
+
+            });
+        </script>
+
+    </body>
+</html>

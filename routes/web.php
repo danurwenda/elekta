@@ -20,7 +20,7 @@ Route::get('home', function () {
 Auth::routes();
 
 // DASHBOARD
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'DashboardController@getIndex')->name('home');
 // FACEBOOK
 Route::get('sosmed/facebook', 'FacebookController@getIndex')->name('facebook');
 // TWITTER
@@ -39,3 +39,7 @@ Route::get('sosmed/gplus', 'GplusController@getIndex')->name('gplus');
 
 // ANALISIS
 Route::get('analisis', 'AnalisisController@getIndex')->name('analisis');
+
+// REKOMENDASI
+Route::get('rekomendasi', 'PageController@getRekomendasi')->name('rekomendasi');
+

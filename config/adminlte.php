@@ -172,6 +172,7 @@ return [
         ],
         [
             'text' => 'Rekomendasi',
+            'url'=>'rekomendasi',
             'icon' => 'pencil-square-o'
         ],
         [
