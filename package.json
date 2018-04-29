@@ -15,7 +15,6 @@
         "pngquant-bin": "^4.0.0"
     },
     "dependencies": {
-        "amcharts3": "github:amcharts/amcharts3",
         "flot": "^0.8.0-alpha",
         "moment": "^2.22.1",
         "npm": "^6.0.0",

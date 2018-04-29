@@ -8,7 +8,9 @@ last update : <span id='tw-last-update' style='display: none'>{{ $timestamp }}</
 <script>
     $('#tw-last-update').show().html(moment.unix($('#tw-last-update').html()).format('HH:mm:ss DD-MMM-YYYY'));
 </script>
-<script src="{{{ URL::asset('vendor/amcharts/amcharts.bundle.js')}}}"></script>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 @stop
 
 @section('content')

@@ -3,7 +3,9 @@
 @section('description', '')
 @section('js')
 <!-- Resources -->
-<script src="{{{ URL::asset('vendor/amcharts/amcharts.bundle.js')}}}"></script>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/serial.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 @endsection
 @section('content')
 <div class="row">
